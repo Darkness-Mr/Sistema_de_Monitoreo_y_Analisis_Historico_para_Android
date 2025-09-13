@@ -296,19 +296,21 @@ function updateMetricDisplays(cpu, memory, battery, temperature) {
 
 // Actualizar todos los gráficos
 function updateAllCharts() {
-    // Actualizar gráficos mini
-    updateMiniChart(charts.cpuMini, realTimeData.cpu.map(d => d.value));
-    updateMiniChart(charts.memoryMini, realTimeData.memory.map(d => d.value));
-    updateMiniChart(charts.tempMini, realTimeData.temperature.map(d => d.value));
-    
-    // Actualizar gráfico principal
-    const labels = realTimeData.cpu.map(d => d.time);
-    charts.main.data.labels = labels;
-    charts.main.data.datasets[0].data = realTimeData.cpu.map(d => d.value);
-    charts.main.data.datasets[1].data = realTimeData.memory.map(d => d.value);
-    charts.main.data.datasets[2].data = realTimeData.battery.map(d => d.value);
-    charts.main.data.datasets[3].data = realTimeData.temperature.map(d => d.value);
-    charts.main.update();
+    window.requestAnimationFrame(() => {
+        // Actualizar gráficos mini
+        updateMiniChart(charts.cpuMini, realTimeData.cpu.map(d => d.value));
+        updateMiniChart(charts.memoryMini, realTimeData.memory.map(d => d.value));
+        updateMiniChart(charts.tempMini, realTimeData.temperature.map(d => d.value));
+        
+        // Actualizar gráfico principal
+        const labels = realTimeData.cpu.map(d => d.time);
+        charts.main.data.labels = labels;
+        charts.main.data.datasets[0].data = realTimeData.cpu.map(d => d.value);
+        charts.main.data.datasets[1].data = realTimeData.memory.map(d => d.value);
+        charts.main.data.datasets[2].data = realTimeData.battery.map(d => d.value);
+        charts.main.data.datasets[3].data = realTimeData.temperature.map(d => d.value);
+        charts.main.update();
+    })
 }
 
 // Actualizar gráficos mini
