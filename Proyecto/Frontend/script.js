@@ -158,7 +158,7 @@ function initializeCharts() {
                 },
                 y: {
                     min: 0,
-                    max: 100,
+                    max: 100, // Valor inicial para CPU/Batería
                     grid: { color: 'rgba(255, 255, 255, 0.1)' },
                     ticks: { color: '#666' }
                 }
