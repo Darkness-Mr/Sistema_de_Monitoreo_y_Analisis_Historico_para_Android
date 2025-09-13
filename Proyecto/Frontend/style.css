@@ -224,6 +224,7 @@ body {
     color: var(--text-primary);
     outline: none;
     cursor: pointer;
+    margin-left: 20px;
 }
 
 #mainChart {
