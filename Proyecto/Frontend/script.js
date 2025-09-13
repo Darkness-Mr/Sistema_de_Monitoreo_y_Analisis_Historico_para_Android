@@ -188,6 +188,11 @@ function initializeCharts() {
 // Simular conexión con el backend (reemplazar con conexión real)
 function connectToBackend() {
     // En una implementación real, aquí se conectaría via WebSockets o API REST
+    // Ejemplo:
+    // fetch('/api/metrics').then(...)
+    // o
+    // const socket = new WebSocket('ws://...');
+    // socket.onmessage = (event) => { ... }
     console.log("Conectando al backend...");
     
     // Simular conexión exitosa después de 2 segundos
@@ -259,6 +264,12 @@ function simulateDataUpdate() {
 
 // Actualizar las displays de métricas
 function updateMetricDisplays(cpu, memory, battery, temperature) {
+    // Validación de datos
+    cpu = isFinite(cpu) ? cpu : 0;
+    memory = isFinite(memory) ? memory : 0;
+    battery = isFinite(battery) ? battery : 0;
+    temperature = isFinite(temperature) ? temperature : 0;
+
     document.getElementById('cpuValue').textContent = `${cpu.toFixed(1)}%`;
     document.getElementById('memoryValue').textContent = `${memory.toFixed(1)} MB`;
     document.getElementById('batteryValue').textContent = `${battery.toFixed(1)}%`;

@@ -10,15 +10,15 @@
     </head>
     <body>
         <div class="glass-container">
-        <header class="glass-header">
-            <h1>Monitoreo Android</h1>
-            <div class="connection-status" id="connectionStatus">
-                <span class="status-dot"></span>
+        <header class="glass-header" role="banner">
+            <h1 aria-label="Título principal">Monitoreo Android</h1>
+            <div class="connection-status" id="connectionStatus" aria-live="polite">
+                <span class="status-dot" aria-label="Estado de conexión"></span>
                 Dispositivo no conectado
             </div>
         </header>
 
-        <main class="dashboard">
+        <main class="dashboard" role="main">
             <div class="metrics-grid">
                 <!-- Tarjeta de CPU -->
                 <div class="metric-card glass-card">
@@ -82,9 +82,9 @@
                         <span>CPU</span>
                         <span>Memoria</span>
                     </div>
-                    <div class="process-list" id="processList">
+                    <div class="process-list" id="processList" role="list" aria-label="Lista de procesos">
                         <!-- Los procesos se cargarán dinámicamente -->
-                        <div class="process-item">
+                        <div class="process-item" role="listitem">
                             <span>Esperando datos...</span>
                         </div>
                     </div>
