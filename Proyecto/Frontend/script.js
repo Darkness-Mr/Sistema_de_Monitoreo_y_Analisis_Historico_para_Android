@@ -299,13 +299,13 @@ function updateMetricDisplays(cpu, memory, battery, temperature) {
     // Actualizar estado de batería
     const batteryStatus = document.getElementById('batteryStatus');
     if (battery > 70) {
-        batteryStatus.textContent = 'Cargado';
+        batteryStatus.textContent = i18n.es.battery.charged;
         batteryStatus.style.color = 'var(--success)';
     } else if (battery > 30) {
-        batteryStatus.textContent = 'Descargando';
+        batteryStatus.textContent = i18n.es.battery.discharging;
         batteryStatus.style.color = 'var(--warning)';
     } else {
-        batteryStatus.textContent = 'Baja';
+        batteryStatus.textContent = i18n.es.battery.low;
         batteryStatus.style.color = 'var(--danger)';
     }
 }
