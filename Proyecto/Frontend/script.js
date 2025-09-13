@@ -270,6 +270,11 @@ function updateMetricDisplays(cpu, memory, battery, temperature) {
     battery = isFinite(battery) ? battery : 0;
     temperature = isFinite(temperature) ? temperature : 0;
 
+    animateMetric('cpuValue')
+    animateMetric('memoryValue')
+    animateMetric('batteryValue')
+    animateMetric('temperatureValue')
+
     document.getElementById('cpuValue').textContent = `${cpu.toFixed(1)}%`;
     document.getElementById('memoryValue').textContent = `${memory.toFixed(1)} MB`;
     document.getElementById('batteryValue').textContent = `${battery.toFixed(1)}%`;
@@ -292,6 +297,12 @@ function updateMetricDisplays(cpu, memory, battery, temperature) {
         batteryStatus.textContent = 'Baja';
         batteryStatus.style.color = 'var(--danger)';
     }
+}
+
+function animateMetric(id){
+    const el = document.getElementById(id);
+    el.classList.add('updated');
+    setTimeout(() => el.classList.remove('updated'), 300)
 }
 
 // Actualizar todos los gráficos
