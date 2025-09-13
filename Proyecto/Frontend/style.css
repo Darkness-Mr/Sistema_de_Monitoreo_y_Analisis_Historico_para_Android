@@ -314,3 +314,19 @@ body {
         align-items: flex-start;
     }
 }
+
+@media (max-width: 768px) {
+    .main-chart-container {
+        max-width: 100%;
+    }
+    #mainChart {
+        max-width: 100%;
+        height: 160px !important;
+        min-height: 120px;
+    }
+    .mini-chart {
+        max-width: 90px;
+        height: 38px;
+        min-height: 30px;
+    }
+}
