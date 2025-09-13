@@ -17,13 +17,15 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 const i18n = {
-    connected: 'Dispositivo conectado',
-    disconnected: 'Dispositivo no conectado',
-    battery: {
-        charged: 'Cargado',
-        discharging: 'Descargando',
-        low: 'Baja',
-        unknown: 'Desconocido'
+    es: {
+        connected: 'Dispositivo conectado',
+        disconnected: 'Dispositivo no conectado',
+        battery: {
+            discharging: 'Descargando',
+            charged: 'Cargado',
+            low: 'Baja',
+            unknown: 'Desconocido'
+        }
     }
     // Apartado para agregar mas idiomas
 }
