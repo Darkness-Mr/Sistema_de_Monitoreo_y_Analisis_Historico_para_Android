@@ -191,12 +191,11 @@ body {
     margin-top: 5px;
 }
 
-/* Gráfico principal */
+/* Gráfico de Métricas en Tiempo real */
 .main-chart-container {
     width: 100%;
-    min-height: 350px;
-    max-width: 550px;
-    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .chart-header {
