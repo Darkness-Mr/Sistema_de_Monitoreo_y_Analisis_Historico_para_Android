@@ -16,6 +16,18 @@ document.addEventListener('DOMContentLoaded', function() {
     startDataUpdates();
 });
 
+const i18n = {
+    connected: 'Dispositivo conectado',
+    disconnected: 'Dispositivo no conectado',
+    battery: {
+        charged: 'Cargado',
+        discharging: 'Descargando',
+        low: 'Baja',
+        unknown: 'Desconocido'
+    }
+    // Apartado para agregar mas idiomas
+}
+
 // Inicializar todos los gráficos
 function initializeCharts() {
     // Configuración común para gráficos pequeños
@@ -199,9 +211,8 @@ function connectToBackend() {
     setTimeout(() => {
         const statusDot = document.querySelector('.status-dot');
         const statusText = document.querySelector('.connection-status');
-        
         statusDot.classList.add('connected');
-        statusText.textContent = 'Dispositivo conectado';
+        statusText.textContent = i18n.es.connected;
         
         // Simular recepción de datos iniciales
         simulateInitialData();
