@@ -36,7 +36,7 @@ function initializeCharts() {
     const miniChartConfig = {
         type: 'line',
         options: {
-            responsive: true,
+            responsive: false,
             maintainAspectRatio: false,
             plugins: {
                 legend: { display: false },
