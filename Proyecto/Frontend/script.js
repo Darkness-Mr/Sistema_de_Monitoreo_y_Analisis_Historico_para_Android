@@ -140,7 +140,7 @@ function initializeCharts() {
             ]
         },
         options: {
-            responsive: true,
+            responsive: false,
             maintainAspectRatio: false,
             plugins: {
                 legend: {
