@@ -192,10 +192,10 @@ function initializeCharts() {
                 charts.main.options.scales.y.min = 0;
                 charts.main.options.scales.y.max = 50; // Ajustar según necesidades
             } else if (selectedMetric === 'memory') {
-                charts.main.options.sacles.y.min = 0;
+                charts.main.options.scales.y.min = 0;
                 charts.main.options.scales.y.max = 200;
             } else {
-                charts.main.options.sacles.y.min = 0;
+                charts.main.options.scales.y.min = 0;
                 charts.main.options.scales.y.max = 100;
             }
         }
