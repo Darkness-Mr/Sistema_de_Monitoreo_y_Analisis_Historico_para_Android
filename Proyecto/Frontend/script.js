@@ -203,6 +203,11 @@ function initializeCharts() {
     });
 }
 
+// Función para normalizar texto (minúsculas y sin acentos)
+function normalize(str) {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+}
+
 // Simular conexión con el backend (reemplazar con conexión real)
 function connectToBackend() {
     // En una implementación real, aquí se conectaría via WebSockets o API REST
