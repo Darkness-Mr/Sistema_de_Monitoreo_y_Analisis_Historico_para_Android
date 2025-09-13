@@ -9,6 +9,89 @@
         <link rel="shortcut icon" href="icon/icon.png" type="image/x-icon">
     </head>
     <body>
-        
+        <div class="glass-container">
+        <header class="glass-header">
+            <h1>Monitoreo Android</h1>
+            <div class="connection-status" id="connectionStatus">
+                <span class="status-dot"></span>
+                Dispositivo no conectado
+            </div>
+        </header>
+
+        <main class="dashboard">
+            <div class="metrics-grid">
+                <!-- Tarjeta de CPU -->
+                <div class="metric-card glass-card">
+                    <h2>CPU</h2>
+                    <div class="metric-value" id="cpuValue">0%</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="cpuProgress"></div>
+                    </div>
+                    <canvas id="cpuChart" class="mini-chart"></canvas>
+                </div>
+
+                <!-- Tarjeta de Memoria -->
+                <div class="metric-card glass-card">
+                    <h2>Memoria</h2>
+                    <div class="metric-value" id="memoryValue">0 MB</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="memoryProgress"></div>
+                    </div>
+                    <canvas id="memoryChart" class="mini-chart"></canvas>
+                </div>
+
+                <!-- Tarjeta de Batería -->
+                <div class="metric-card glass-card">
+                    <h2>Batería</h2>
+                    <div class="metric-value" id="batteryValue">0%</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="batteryProgress"></div>
+                    </div>
+                    <div class="battery-status" id="batteryStatus">Desconocido</div>
+                </div>
+
+                    <!-- Tarjeta de Temperatura -->
+                    <div class="metric-card glass-card">
+                        <h2>Temperatura</h2>
+                        <div class="metric-value" id="temperatureValue">0°C</div>
+                        <canvas id="tempChart" class="mini-chart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Gráfico principal -->
+                <div class="main-chart-container glass-card">
+                    <div class="chart-header">
+                        <h2>Métricas en Tiempo Real</h2>
+                        <div class="chart-controls">
+                            <select id="chartSelector">
+                                <option value="cpu">CPU</option>
+                                <option value="memory">Memoria</option>
+                                <option value="battery">Batería</option>
+                                <option value="temperature">Temperatura</option>
+                            </select>
+                        </div>
+                    </div>
+                    <canvas id="mainChart"></canvas>
+                </div>
+
+                <!-- Lista de procesos -->
+                <div class="process-list-container glass-card">
+                    <h2>Aplicaciones en Ejecución</h2>
+                    <div class="process-list-header">
+                        <span>Nombre</span>
+                        <span>CPU</span>
+                        <span>Memoria</span>
+                    </div>
+                    <div class="process-list" id="processList">
+                        <!-- Los procesos se cargarán dinámicamente -->
+                        <div class="process-item">
+                            <span>Esperando datos...</span>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <script src="script.js"></script>
     </body>
 </html>
