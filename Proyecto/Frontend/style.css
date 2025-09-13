@@ -315,6 +315,7 @@ body {
     }
 }
 
+/* Responsive para móviles */
 @media (max-width: 768px) {
     .main-chart-container {
         max-width: 100%;
