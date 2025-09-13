@@ -137,6 +137,8 @@ body {
     font-weight: 700;
     margin-bottom: 15px;
     color: var(--text-primary);
+    transition: background 0.3s, color o.3s;
+    background: none;
 }
 
 .progress-bar {
