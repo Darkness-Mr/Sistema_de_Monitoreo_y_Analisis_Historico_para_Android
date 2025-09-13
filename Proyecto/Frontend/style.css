@@ -207,8 +207,12 @@ body {
 }
 
 .chart-header h2 {
-    font-size: 1.4rem;
+    font-size: 1.8rem;
     font-weight: 600;
+    color: #333;
+    margin: 0;
+    text-align: center;
+    flex-grow: 1;
 }
 
 .chart-controls select {
