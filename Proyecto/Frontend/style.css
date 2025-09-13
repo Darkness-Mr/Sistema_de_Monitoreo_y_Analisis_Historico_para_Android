@@ -1,0 +1,298 @@
+/* Variables globales */
+:root {
+    --primary-color: rgba(255, 255, 255, 0.8);
+    --secondary-color: rgba(255, 255, 255, 0.6);
+    --accent-color: rgba(86, 124, 228, 0.6);
+    --background: rgba(240, 244, 255, 0.2);
+    --card-background: rgba(255, 255, 255, 0.15);
+    --card-border: rgba(255, 255, 255, 0.18);
+    --text-primary: #333;
+    --text-secondary: #555;
+    --success: rgba(76, 175, 80, 0.7);
+    --warning: rgba(255, 193, 7, 0.7);
+    --danger: rgba(244, 67, 54, 0.7);
+}
+
+/* Estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', 'Roboto', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: var(--text-primary);
+}
+
+/* Efecto glass */
+.glass-container {
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    background-color: var(--background);
+    border-radius: 20px;
+    border: 1px solid var(--card-border);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    width: 95%;
+    max-width: 1400px;
+    overflow: hidden;
+}
+
+.glass-card {
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: var(--card-background);
+    border-radius: 12px;
+    border: 1px solid var(--card-border);
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Encabezado */
+.glass-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid var(--card-border);
+}
+
+.glass-header h1 {
+    font-weight: 600;
+    font-size: 1.8rem;
+    background: linear-gradient(90deg, #4a6cf7, #6a11cb);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.connection-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--danger);
+    animation: pulse 2s infinite;
+}
+
+.status-dot.connected {
+    background-color: var(--success);
+    animation: none;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+/* Dashboard */
+.dashboard {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.metric-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.metric-card h2 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.metric-value {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--text-primary);
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+#cpuProgress {
+    background: linear-gradient(90deg, #4a6cf7, #6a11cb);
+}
+
+#memoryProgress {
+    background: linear-gradient(90deg, #ff9a9e, #fad0c4);
+}
+
+#batteryProgress {
+    background: linear-gradient(90deg, #4facfe, #00f2fe);
+}
+
+.mini-chart {
+    width: 100%;
+    height: 70px;
+}
+
+.battery-status {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-top: 5px;
+}
+
+/* Gráfico principal */
+.main-chart-container {
+    width: 100%;
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.chart-header h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.chart-controls select {
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 8px 12px;
+    color: var(--text-primary);
+    outline: none;
+    cursor: pointer;
+}
+
+#mainChart {
+    width: 100%;
+    height: 300px;
+}
+
+/* Lista de procesos */
+.process-list-container {
+    width: 100%;
+}
+
+.process-list-header {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr;
+    padding: 10px 15px;
+    font-weight: 600;
+    border-bottom: 1px solid var(--card-border);
+    margin-bottom: 10px;
+}
+
+.process-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.process-item {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr;
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: background-color 0.2s ease;
+}
+
+.process-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Scrollbar personalizado */
+.process-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.process-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+.process-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+.process-list::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.metric-card, .main-chart-container, .process-list-container {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.metric-card:nth-child(2) { animation-delay: 0.1s; }
+.metric-card:nth-child(3) { animation-delay: 0.2s; }
+.metric-card:nth-child(4) { animation-delay: 0.3s; }
+.main-chart-container { animation-delay: 0.4s; }
+.process-list-container { animation-delay: 0.5s; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .glass-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .chart-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+}
