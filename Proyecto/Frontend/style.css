@@ -194,6 +194,8 @@ body {
 /* Gráfico de Métricas en Tiempo real */
 .main-chart-container {
     width: 100%;
+    min-height: 350px;
+    max-width: 550px;
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -319,7 +321,21 @@ body {
     .chart-header {
         flex-direction: column;
         gap: 15px;
+        text-align: center;
         align-items: flex-start;
+    }
+
+    .chart-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .chart-controls {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .main-chart-wrapper {
+        height: 250px;
     }
 }
 
@@ -356,7 +372,7 @@ body {
 
 .main-chart-wrapper {
     width: 100%;
-    height: 250px;
+    height: 300px;
     position: relative;
 }
 
