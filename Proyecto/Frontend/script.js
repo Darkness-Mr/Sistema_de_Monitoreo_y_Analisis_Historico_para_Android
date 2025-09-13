@@ -301,6 +301,7 @@ function updateMetricDisplays(cpu, memory, battery, temperature) {
     document.getElementById('cpuProgress').style.width = `${cpu}%`;
     document.getElementById('memoryProgress').style.width = `${memory/200*100}%`; // Suponiendo 200MB como máximo
     document.getElementById('batteryProgress').style.width = `${battery}%`;
+    document.getElementById('temperatureProgress').style.width = `${temperature/50*100}%`;
     
     // Actualizar estado de batería
     const batteryStatus = document.getElementById('batteryStatus');
