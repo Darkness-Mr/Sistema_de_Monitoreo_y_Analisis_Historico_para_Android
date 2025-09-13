@@ -142,7 +142,7 @@ body {
 }
 
 /* Animación para cambio de valor */
-.metric-value.update{
+.metric-value.updated {
     background: linear-gradient(90deg, #e0eafc, #cfdef3);
     color: #4a6cf7;
 }
