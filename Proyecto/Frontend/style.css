@@ -221,7 +221,7 @@ body {
 
 #mainChart {
     width: 100% !important;
-    height: 480px;
+    max-width: 480px;
     height: 220px !important;
     min-height: 180px;
     margin: 0 auto;
