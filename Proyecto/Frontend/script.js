@@ -211,19 +211,10 @@ function initializeCharts() {
         if (datasetIndex !== undefined) {
             charts.main.data.datasets[datasetIndex].hidden = false;
         }
-            
-            // Ajustar escala Y si es necesario
-            if (selectedMetric === 'temperature') {
-                charts.main.options.scales.y.min = 0;
-                charts.main.options.scales.y.max = 50; 
-            } else if (selectedMetric === 'memory') {
-                charts.main.options.scales.y.min = 0;
-                charts.main.options.scales.y.max = 200;
-            } else {
-                charts.main.options.scales.y.min = 0;
-                charts.main.options.scales.y.max = 100;
-            }
-        }
+        
+        // Actualizar la leyenda para que no muestre elementos tachados
+        charts.main.options.plugins.legend.display = false;
+    
         charts.main.update();
     });
 }
