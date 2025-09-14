@@ -175,12 +175,37 @@ function initializeCharts() {
 
     // Event listener para el selector de gráficos
     document.getElementById('chartSelector').addEventListener('change', function(e) {
-        const selectedMetric = normalize(e.target.value);
+        const selectedMetric = e.target.value;
         
         // Ocultar todos los datasets
         charts.main.data.datasets.forEach(dataset => {
             dataset.hidden = true;
         });
+
+        // Encontrar el índice del dataset seleccionado
+        let datasetIndex;
+        switch(selectedMetric) {
+            case 'cpu':
+                datasetIndex = 0;
+                charts.main.options.scales.y.min = 0;
+                charts.main.options.scales.y.max = 100;
+                break;
+            case 'memory':
+                datasetIndex = 1;
+                charts.main.options.scales.y.min = 0;
+                charts.main.options.scales.y.max = 200;
+                break;
+            case 'battery':
+                datasetIndex = 2;
+                charts.main.options.scales.y.min = 0;
+                charts.main.options.scales.y.max = 100;
+                break;
+            case 'temperature':
+                datasetIndex = 3;
+                charts.main.options.scales.y.min = 0;
+                charts.main.options.scales.y.max = 50;
+                break;
+        }
         
         // Mostrar solo el seleccionado
         const datasetIndex = charts.main.data.datasets.findIndex(d => normalize(d.label) === selectedMetric);
@@ -201,11 +226,6 @@ function initializeCharts() {
         }
         charts.main.update();
     });
-}
-
-// Función para normalizar texto (minúsculas y sin acentos)
-function normalize(str) {
-    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 }
 
 // Simular conexión con el backend (reemplazar con conexión real)
