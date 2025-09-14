@@ -144,7 +144,8 @@ function initializeCharts() {
             maintainAspectRatio: false,
             plugins: {
                 legend: {
-                    position: 'top',
+                    display: false, // Esto oculta completamente la leyenda
+                    position: 'top', 
                     labels: {
                         color: '#333',
                         usePointStyle: true
@@ -211,10 +212,6 @@ function initializeCharts() {
         if (datasetIndex !== undefined) {
             charts.main.data.datasets[datasetIndex].hidden = false;
         }
-        
-        // Actualizar la leyenda para que no muestre elementos tachados
-        charts.main.options.plugins.legend.display = false;
-    
         charts.main.update();
     });
 }
