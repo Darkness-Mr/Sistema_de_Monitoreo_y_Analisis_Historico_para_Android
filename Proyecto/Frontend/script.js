@@ -175,7 +175,7 @@ function initializeCharts() {
 
     // Event listener para el selector de gráficos
     document.getElementById('chartSelector').addEventListener('change', function(e) {
-        const selectedMetric = e.target.value;
+        const selectedMetric = normalize(e.target.value);
         
         // Ocultar todos los datasets
         charts.main.data.datasets.forEach(dataset => {
@@ -183,7 +183,7 @@ function initializeCharts() {
         });
         
         // Mostrar solo el seleccionado
-        const datasetIndex = charts.main.data.datasets.findIndex(d => d.label.toLowerCase() === selectedMetric);
+        const datasetIndex = charts.main.data.datasets.findIndex(d => normalize(d.label) === selectedMetric);
         if (datasetIndex !== -1) {
             charts.main.data.datasets[datasetIndex].hidden = false;
             
