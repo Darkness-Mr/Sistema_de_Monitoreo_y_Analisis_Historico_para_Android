@@ -193,7 +193,7 @@ function initializeCharts() {
             case 'memory':
                 datasetIndex = 1;
                 charts.main.options.scales.y.min = 0;
-                charts.main.options.scales.y.max = 200;
+                charts.main.options.scales.y.max = 100;
                 break;
             case 'battery':
                 datasetIndex = 2;
@@ -203,7 +203,7 @@ function initializeCharts() {
             case 'temperature':
                 datasetIndex = 3;
                 charts.main.options.scales.y.min = 0;
-                charts.main.options.scales.y.max = 50;
+                charts.main.options.scales.y.max = 100;
                 break;
         }
         
@@ -218,6 +218,18 @@ function initializeCharts() {
         charts.main.update();
     });
 }
+
+// Añade esta función para inicializar correctamente el gráfico principal
+function initializeMainChart() {
+    // Al inicio, mostrar solo CPU
+    charts.main.data.datasets[0].hidden = false;
+    charts.main.options.plugins.legend.display = false;
+    charts.main.update();
+}
+
+// Llama a esta función después de inicializar los charts
+initializeMainChart();
+
 
 // Simular conexión con el backend (reemplazar con conexión real)
 function connectToBackend() {
