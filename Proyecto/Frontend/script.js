@@ -208,9 +208,9 @@ function initializeCharts() {
         }
         
         // Mostrar solo el seleccionado
-        const datasetIndex = charts.main.data.datasets.findIndex(d => normalize(d.label) === selectedMetric);
-        if (datasetIndex !== -1) {
+        if (datasetIndex !== undefined) {
             charts.main.data.datasets[datasetIndex].hidden = false;
+        }
             
             // Ajustar escala Y si es necesario
             if (selectedMetric === 'temperature') {
