@@ -190,7 +190,7 @@ function initializeCharts() {
             // Ajustar escala Y si es necesario
             if (selectedMetric === 'temperature') {
                 charts.main.options.scales.y.min = 0;
-                charts.main.options.scales.y.max = 50; // Ajustar según necesidades
+                charts.main.options.scales.y.max = 50; 
             } else if (selectedMetric === 'memory') {
                 charts.main.options.scales.y.min = 0;
                 charts.main.options.scales.y.max = 200;
