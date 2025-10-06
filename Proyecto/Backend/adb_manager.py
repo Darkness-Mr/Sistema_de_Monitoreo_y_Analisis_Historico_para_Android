@@ -1,48 +1,42 @@
 import subprocess
-import re
 
 class ADBManager:
     def __init__(self):
         self.device_connected = False
         self.check_adb()
-    
-    def check_adb(self):
-        """Verifica si ADB está disponible"""
+
+    def check_adb(self) -> bool:
         try:
-            result = subprocess.run(['adb', 'version'], capture_output=True, text=True)
-            if result.returncode == 0:
-                print("✅ ADB detectado correctamente")
-                return True
-            else:
-                print("❌ ADB no encontrado")
-                return False
-        except Exception as e:
-            print(f"❌ Error al verificar ADB: {e}")
+            r = subprocess.run(['adb', 'version'], capture_output=True, text=True)
+            return r.returncode == 0
+        except Exception:
             return False
-    
-    def connect_device(self):
-        """Verifica si hay un dispositivo conectado"""
+
+    def _list_devices(self):
         try:
-            result = subprocess.run(['adb', 'devices'], capture_output=True, text=True)
-            devices = [line for line in result.stdout.split('\n') if line.strip() and 'device' in line]
-            
-            if len(devices) > 1:  # Más de 1 porque la primera línea es "List of devices"
-                self.device_connected = True
-                print("✅ Dispositivo Android conectado")
-                return True
-            else:
-                print("❌ No hay dispositivos Android conectados")
-                return False
-        except Exception as e:
-            print(f"❌ Error al conectar dispositivo: {e}")
-            return False
-    
-    def execute_command(self, command):
-        """Ejecuta un comando ADB y retorna el resultado"""
+            out = subprocess.run(['adb', 'devices'], capture_output=True, text=True).stdout.splitlines()
+            devs = []
+            for line in out[1:]:
+                line = line.strip()
+                if not line:
+                    continue
+                parts = line.split()
+                if len(parts) >= 2:
+                    devs.append((parts[0], parts[1]))  # (serial, status)
+            return devs
+        except Exception:
+            return []
+
+    def connect_device(self) -> bool:
+        """Marca el estado según 'adb devices'."""
+        devs = self._list_devices()
+        self.device_connected = any(status == 'device' for _, status in devs)
+        return self.device_connected
+
+    def execute_command(self, command: str) -> str:
+        """Ejecuta 'adb shell <command>' y devuelve stdout (o '')."""
         try:
-            full_command = f"adb shell {command}"
-            result = subprocess.run(full_command, shell=True, capture_output=True, text=True)
-            return result.stdout.strip()
-        except Exception as e:
-            print(f"❌ Error ejecutando comando ADB: {e}")
-            return None
+            r = subprocess.run(['adb', 'shell', command], capture_output=True, text=True)
+            return r.stdout.strip()
+        except Exception:
+            return ""
