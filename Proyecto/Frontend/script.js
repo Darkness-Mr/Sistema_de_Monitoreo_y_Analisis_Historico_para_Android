@@ -293,13 +293,25 @@ function pushPoint(key, point) {
 function updateProcessList(processes) {
   const processList = document.getElementById('processList');
   processList.innerHTML = '';
-  processes.forEach(p => {
+
+  if (!Array.isArray(processes) || processes.length === 0) {
+    const item = document.createElement('div');
+    item.className = 'process-item';
+    item.innerHTML = `<span>Sin datos de procesos</span><span>-</span><span>-</span>`;
+    processList.appendChild(item);
+    return;
+  }
+
+  // Ordena por CPU desc (por si viene desordenado)
+  const rows = [...processes].sort((a, b) => (b.cpu || 0) - (a.cpu || 0));
+
+  rows.forEach(p => {
     const item = document.createElement('div');
     item.className = 'process-item';
     item.innerHTML = `
-      <span>${p.name || ''}</span>
-      <span>-</span>
-      <span>-</span>
+      <span title="PID ${p.pid || ''}">${p.name || ''}</span>
+      <span>${Number(p.cpu || 0).toFixed(1)}%</span>
+      <span>${Number(p.memory || 0).toFixed(1)} MB</span>
     `;
     processList.appendChild(item);
   });
